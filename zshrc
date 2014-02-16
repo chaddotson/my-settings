@@ -20,6 +20,36 @@ autoload -U promptinit && promptinit
 autoload -U zrecompile
 autoload -U zcalc
 
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats \
+        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats       \
+        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+# or use pre_cmd, see man zshcontrib
+#vcs_info_wrapper() {
+#   vcs_info
+#
+#   
+#   if [ -n "$vcs_info_msg_0_" ]; then
+#       vcs="%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+#   fi
+#}
+
+#precmd() {
+#    vcs_info
+#}
+#setopt transient_rprompt
+
+RPROMPT=''
+
+#RPROMPT=${vcs_info_msg_0_}
+
+
 # set up hosts completion from ssh/known_hosts
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
@@ -44,7 +74,7 @@ prompt suse
 #PROMPT='%d%>:%{\e[0m%}' # default prompt
 #RPROMPT='[%* on %D]' # prompt for right side of screen
 #RPROMPT="$(uptime | sed 's/.*load average: //' | awk -F\, '{print $1}')"
-RPROMPT=''
+#RPROMPT=''
 
 GREP_OPTIONS='--color=auto'
 GREP_COLOR='7;31'
@@ -68,3 +98,7 @@ function chpwd()
    emulate -L zsh
    ls
 }
+
+
+SPROMPT="zsh: correct %R to %r? ([Y]es/[No]/[E]dit/[A]bort) "
+
