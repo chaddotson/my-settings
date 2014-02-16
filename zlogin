@@ -1,0 +1,2 @@
+python fortune/pyfortune.py fortune/dr_who_quotes fortune/big_bang_theory_quotes fortune/dorkness_rising_quotes fortune/futurama_quotes fortune/star_trek_quotes
+
