@@ -14,21 +14,22 @@ export PATH PAGER COLORTERM HISTFILE HISTSIZE SAVEHIST DIRSTACKSIZE
 
 zmodload zsh/complist
 
+
+setopt prompt_subst
 autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U zrecompile
 autoload -U zcalc
 
-setopt prompt_subst
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' actionformats \
-        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats       \
-        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+#zstyle ':vcs_info:*' actionformats \
+#        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+#zstyle ':vcs_info:*' formats       \
+#        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+#zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
-zstyle ':vcs_info:*' enable git cvs svn
+#zstyle ':vcs_info:*' enable git cvs svn
 
 # or use pre_cmd, see man zshcontrib
 #vcs_info_wrapper() {
@@ -43,11 +44,32 @@ zstyle ':vcs_info:*' enable git cvs svn
 #precmd() {
 #    vcs_info
 #}
-#setopt transient_rprompt
 
-RPROMPT=''
+#RPROMPT=''
 
 #RPROMPT=${vcs_info_msg_0_}
+
+
+
+                     
+#zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "Used VCS use 
+#%  vcs_info_printsys 
+# for supported systems 
+#zstyle ':vcs_info:*' enable git cvs svn
+
+#RPROMPT=$(vcs_info_msg_0_)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # set up hosts completion from ssh/known_hosts
@@ -69,12 +91,55 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)
 # prompt walters
 #
 
-prompt suse
+#prompt suse
+
+
+#PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ % "
+#PROMPT="$fg[green]%n@%m$fg[cyan]:$fg[magenta][$fg[green]%~/$fg[magenta]]$fg[white] %#> "
+
+#PROMPT="%F{white}%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> "
+
+PROMPT="%n@%m:[%~/] %#> "
+
 
 #PROMPT='%d%>:%{\e[0m%}' # default prompt
 #RPROMPT='[%* on %D]' # prompt for right side of screen
 #RPROMPT="$(uptime | sed 's/.*load average: //' | awk -F\, '{print $1}')"
 #RPROMPT=''
+
+
+setopt transient_rprompt
+
+
+zstyle ':vcs_info:*' actionformats \
+        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats       \
+        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+        echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+    fi
+}
+
+RPROMPT='$(vcs_info_wrapper)'
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GREP_OPTIONS='--color=auto'
 GREP_COLOR='7;31'
@@ -96,9 +161,9 @@ alias vi='vim'
 function chpwd()
 {
    emulate -L zsh
-   ls
+   #lsa
 }
 
 
-SPROMPT="zsh: correct %R to %r? ([Y]es/[No]/[E]dit/[A]bort) "
+#SPROMPT="zsh: correct %R to %r? ([Y]es/[No]/[E]dit/[A]bort) "
 
