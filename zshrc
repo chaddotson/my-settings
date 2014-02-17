@@ -49,7 +49,7 @@ autoload -Uz vcs_info
 
 #RPROMPT=${vcs_info_msg_0_}
 
-
+#https://wiki.archlinux.org/index.php/zsh#Customizing_the_prompt
 
                      
 #zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "Used VCS use 
