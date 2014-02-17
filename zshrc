@@ -99,8 +99,12 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)
 
 #PROMPT="%F{white}%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> "
 
-PROMPT="%n@%m:[%~/] %#> "
+#PROMPT="%n@%m:[%~/] %#> "
 
+
+PROMPT=$'%B%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> %B'
+
+#PROMPT=$'%F{yellow}%n%F{white}@%F{cyan}%m%F{white}:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> '
 
 #PROMPT='%d%>:%{\e[0m%}' # default prompt
 #RPROMPT='[%* on %D]' # prompt for right side of screen
