@@ -16,3 +16,5 @@ syntax on
 set number
 
 set nocompatible
+
+set nopaste

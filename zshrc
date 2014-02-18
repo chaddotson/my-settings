@@ -8,6 +8,13 @@ DIRSTACKSIZE=20
 export PATH PAGER COLORTERM HISTFILE HISTSIZE SAVEHIST DIRSTACKSIZE
 
 
+
+
+
+setopt prompt_subst
+setopt nobeep
+
+
 #PROMPT='%d%>:%{\e[0m%}' # default prompt
 #RPROMPT='[%* on %D]' # prompt for right side of screen
 
@@ -15,7 +22,6 @@ export PATH PAGER COLORTERM HISTFILE HISTSIZE SAVEHIST DIRSTACKSIZE
 zmodload zsh/complist
 
 
-setopt prompt_subst
 autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
@@ -102,7 +108,10 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)
 #PROMPT="%n@%m:[%~/] %#> "
 
 
-PROMPT=$'%B%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> %B'
+#PROMPT=$'%B%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> %B'
+PROMPT=$'[%n@%m:%~/]$ '
+
+PROMPT=$'[%n@%m:%~/]$ '
 
 #PROMPT=$'%F{yellow}%n%F{white}@%F{cyan}%m%F{white}:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> '
 
@@ -170,4 +179,8 @@ function chpwd()
 
 
 #SPROMPT="zsh: correct %R to %r? ([Y]es/[No]/[E]dit/[A]bort) "
+
+
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
