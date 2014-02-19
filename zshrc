@@ -111,7 +111,7 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)
 #PROMPT=$'%B%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> %B'
 PROMPT=$'[%n@%m:%~/]$ '
 
-PROMPT=$'[%n@%m:%~/]$ '
+PROMPT=$'[%n@%m %~/]$ '
 
 #PROMPT=$'%F{yellow}%n%F{white}@%F{cyan}%m%F{white}:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> '
 
