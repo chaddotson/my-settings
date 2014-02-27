@@ -81,9 +81,31 @@ autoload -Uz vcs_info
 # set up hosts completion from ssh/known_hosts
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
-zstyle ':completion:::::' completer _complete _approximate
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 
 zstyle ':completion:*' menu select
+
+
+#zstyle ':completion:*:descriptions' format $'\e[m%d'
+#zstyle ':completion:*' group-name ''
+
+compdef pkill=kill
+compdef pkill=killall
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:processes' command 'ps -au$USER'
+
+# Group matches and Describe
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
+zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
+zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
+
+
+
+
+zstyle ':completion:*' verboes yes
 
 zstyle ':completion:*:approximate:*' max-errors 2
 
