@@ -105,7 +105,7 @@ zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 
 
 
-zstyle ':completion:*' verboes yes
+zstyle ':completion:*' verbose yes
 
 zstyle ':completion:*:approximate:*' max-errors 2
 
