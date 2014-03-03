@@ -13,7 +13,8 @@ export PATH PAGER COLORTERM HISTFILE HISTSIZE SAVEHIST DIRSTACKSIZE
 
 setopt prompt_subst
 setopt nobeep
-
+setopt inc_append_history
+setopt share_history
 
 #PROMPT='%d%>:%{\e[0m%}' # default prompt
 #RPROMPT='[%* on %D]' # prompt for right side of screen
