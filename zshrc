@@ -1,18 +1,10 @@
-PATH=$HOME/bin:/usr/local/bin:$PATH
-PAGER=less
-COLORTERM=yes
-HISTFILE=$HOME/.zshhistory
-HISTSIZE=1000
-SAVEHIST=500000
-DIRSTACKSIZE=20
-export PATH PAGER COLORTERM HISTFILE HISTSIZE SAVEHIST DIRSTACKSIZE
 
-
-
-
-
+setopt correctall
 setopt prompt_subst
 setopt nobeep
+
+
+setopt histignoredups
 setopt inc_append_history
 setopt share_history
 
@@ -110,7 +102,6 @@ zstyle ':completion:*' verbose yes
 
 zstyle ':completion:*:approximate:*' max-errors 2
 
-#zstyle ':completion:*:approximate:*' max-errors 2
 # or to have a better heuristic, by allowing one error per 3 character typed
 zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
@@ -133,8 +124,6 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)
 
 #PROMPT=$'%B%n@%m:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> %B'
 PROMPT=$'[%n@%m:%~/]$ '
-
-PROMPT=$'[%n@%m %~/]$ '
 
 #PROMPT=$'%F{yellow}%n%F{white}@%F{cyan}%m%F{white}:%F{magenta}[%F{green}%~/%F{magenta}]%F{white} %#> '
 
